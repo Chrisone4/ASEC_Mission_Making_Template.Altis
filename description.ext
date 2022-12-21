@@ -1,0 +1,48 @@
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Player Respawn Upon Load In ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+respawnOnStart = 0; //This means that players will spawn where their character in located at the mission start. Change the 0 to 1 if you want players to select their respawn position upon load in. 
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PDA/Intel Required Lines ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+#include "cfgMRH_SoldierTabIntelPictures.hpp"
+#include "cfgMRH_SoldierTabData.hpp"
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Compositions Init Script ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+zeusCompositionScriptLevel = 2;
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Zeus Debug Permissions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+enableDebugConsole[] = {"76561198078365697", "76561198027260540","76561198045189281"}; // Lebloinski EvilRabbit Sm0key
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Server Global Settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+disabledAI = 1; // Disables ai from filling player slots.
+disableChannels[] = {1,2,3,4,5,6}; // 0 = Global, 1 = Side, 2 = Command, 3 = Group, 4 = Vehicle, 5 = Direct, 6 = System. Admin/server/BattlEye can still use Global.
+aiKills = 0; // disable scorelist for AI players
+joinUnassigned = 1; // 0 = players forced into role on join
+
+author="ASEC";
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Carry/Drag Weight ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+class Extended_PostInit_EventHandlers {
+    class ASEC_DRAG_CARRY {
+        init = "ACE_maxWeightDrag = nil; ACE_maxWeightCarry = nil;"
+    };
+};
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Arsenal Required Lines ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+#include "CHSA\dialog.hpp"
+class CfgFunctions
+{
+    #include "CHSA\CfgFunctions.hpp"
+};
+
+class Extended_PreInit_EventHandlers {
+    class ict_asec {
+        init = "call compile preprocessFile 'actions\compile.sqf';";
+    };
+};
